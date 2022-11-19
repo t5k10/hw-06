@@ -1,10 +1,9 @@
-#include <cstddef>
 #include <cstring>
 #include <iostream>
 
 class ArrayContainer {
   public:
-      ArrayContainer() : arr_size(2), quantity_elem(0) {
+      ArrayContainer() : arr_size(0), quantity_elem(0) {
           array = new int[arr_size];
       }
 
@@ -28,10 +27,11 @@ class ArrayContainer {
                   }
                   new_array[i] = array[i];
               }
-              memcpy(index + new_array, index - 1 + array, (quantity_elem - index) * sizeof(array[0]));
+              memcpy(new_array + index, array + (index - 1), (quantity_elem - index) * sizeof(array[0]));
               delete[] array;
               array = new_array;
           }
+
       }
       
       void size() const { std::cout << quantity_elem << '\n'; }
@@ -64,6 +64,9 @@ class ArrayContainer {
       size_t arr_size;              
       size_t quantity_elem;            
       void increase_size_array() {
+          if (arr_size < 2) {
+              arr_size += 1;
+          }
           arr_size *= 1.6;
           int *new_array = new int[arr_size];
           memcpy(new_array, array, quantity_elem * sizeof(array[0]));

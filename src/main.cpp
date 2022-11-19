@@ -56,6 +56,5 @@ int main() {
     list2.push_back(30);
     std::cout << list2 << '\n';
     std::cout << list2.size() << '\n'; 
-    std::cout << list2[10] << '\n' << '\n';
-    
+    std::cout << list2[10] << '\n'; 
 }
