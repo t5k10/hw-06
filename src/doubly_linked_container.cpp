@@ -11,13 +11,6 @@ class DoubleListContainer {
   public:
       DoubleListContainer() : head(nullptr), tail(nullptr), list_size(0) {}
       
-      DoubleListContainer(DoubleListContainer&& container) 
-          : head(container.head), tail(container.tail), list_size(container.list_size) {
-              container.head = nullptr;
-              container.tail = nullptr;
-              container.list_size = 0;
-          }
-
       ~DoubleListContainer() { clear(); }
 
       void push_back(int value) {
